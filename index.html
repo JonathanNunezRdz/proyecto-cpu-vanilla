@@ -1,0 +1,175 @@
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+		<title>Proyecto CPU</title>
+	</head>
+	<body>
+		<div class="container-fluid mt-3">
+			<div class="row">
+				<div class="col-12">
+					<div class="row border-bottom">
+						<div class="col-2">
+							<h4>Tiempo Actual: 0</h4>
+						</div>
+						<div class="col-5">
+							<button type="button" class="btn btn-primary btn-block">
+								Ejecutar instruccion
+							</button>
+						</div>
+						<div class="col-5">
+							<form>
+								<div class="form-group row">
+									<label for="interruption-form" class="col-2 col-form-label"
+										>Interrupcion</label
+									>
+									<div class="col-6">
+										<select class="form-control" id="interruption-form">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+									<div class="col-4">
+										<button type="submit" class="btn btn-warning btn-block">
+											Ejecutar interrupcion
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="row border-bottom py-3">
+						<div class="col-1">
+							<h5>Procesos</h5>
+						</div>
+						<div class="col">
+							<div class="card" style="height: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">New</h5>
+									<div class="card-text">
+										<form>
+											<div class="form-group row">
+												<label
+													for="nombre-proceso-form"
+													class="col-4 col-form-label"
+													>Nombre:</label
+												>
+												<div class="col-8">
+													<div class="border rounded text-center">
+														<p class="my-2">3</p>
+													</div>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label
+													for="paginas-proceso-form"
+													class="col-4 col-form-label"
+													>Paginas:</label
+												>
+												<div class="col-8">
+													<input
+														type="number"
+														class="form-control"
+														id="paginas-proceso-form"
+														required
+													/>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label
+													for="ejec-total-proceso-form"
+													class="col-4 col-form-label"
+													>Ejec Total:</label
+												>
+												<div class="col-8">
+													<input
+														type="number"
+														class="form-control"
+														id="ejec-total-proceso-form"
+														required
+													/>
+												</div>
+											</div>
+
+											<button type="submit" class="btn btn-success btn-block">
+												Añadir
+											</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card" style="height: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">Ready</h5>
+									<div class="card-text">
+										Aqui van los procesos en ready.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card" style="height: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">Running</h5>
+									<div class="card-text">
+										Aqui va el proceso en running.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card" style="height: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">Blocked</h5>
+									<div class="card-text">
+										Aqui van los procesos en blocked.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card" style="height: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">Finished</h5>
+									<div class="card-text">
+										Aqui van los procesos en finished.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
