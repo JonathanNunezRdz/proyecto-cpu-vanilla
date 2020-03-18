@@ -82,7 +82,7 @@
 							<h5>Procesos</h5>
 						</div>
 						<div class="col pr-1">
-							<div class="card" style="height: 18rem;">
+							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">New</h5>
 									<div class="card-text">
@@ -99,7 +99,7 @@
 														class="form-control"
 														id="nombre-proceso-form"
 														name="nombre-proceso-form"
-														value="2"
+														value="1"
 														disabled
 													/>
 												</div>
@@ -148,7 +148,7 @@
 							</div>
 						</div>
 						<div class="col px-1">
-							<div class="card overflow-auto" style="height: 18rem;">
+							<div class="card overflow-auto">
 								<div class="card-body">
 									<h5 class="card-title">Ready</h5>
 									<div class="card-text text-center" id="ready-procesos">
@@ -158,35 +158,31 @@
 							</div>
 						</div>
 						<div class="col px-1">
-							<div class="card" style="height: 18rem;">
+							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">Running</h5>
-									<div class="card-text text-center">
+									<div class="card-text text-center" id="running-proceso">
 										<!-- Aqui va el proceso en running. -->
-										<div class="my-2 border bg-success">3</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col px-1">
-							<div class="card" style="height: 18rem;">
+							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">Blocked</h5>
 									<div class="card-text text-center">
 										<!-- Aqui van los procesos en blocked. -->
-										<div class="my-2 border">6</div>
-										<div class="my-2 border">8</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col pl-1">
-							<div class="card" style="height: 18rem;">
+							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">Finished</h5>
 									<div class="card-text text-center">
 										<!-- Aqui van los procesos en finished. -->
-										<div class="my-2 border">7</div>
 									</div>
 								</div>
 							</div>
@@ -200,7 +196,7 @@
 							<h5>CPU</h5>
 						</div>
 						<div class="col-6 pr-1">
-							<div class="card" style="height: 18rem;">
+							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">Scheduling</h5>
 									<div class="card-text cpu-summary">
@@ -215,7 +211,7 @@
 							</div>
 						</div>
 						<div class="col-4 pl-1">
-							<div class="card" style="height: 18rem;">
+							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">
 										CPU
@@ -262,7 +258,7 @@
 							<h5>Memoria</h5>
 						</div>
 						<div class="col-6 pr-1">
-							<div class="card" style="height: 18rem;">
+							<div class="card">
 								<div class="card-body">
 									<table class="table table-borderless text-center">
 										<thead>
@@ -314,7 +310,7 @@
 							</div>
 						</div>
 						<div class="col-4 pl-1">
-							<div class="card" style="height: 18rem;">
+							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">
 										Memoria
@@ -345,6 +341,7 @@
 		</div>
 		<script src="./Proceso.js"></script>
 		<script src="./index.js"></script>
+		<script src="./agregarProceso.js"></script>
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
