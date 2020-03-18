@@ -17,7 +17,17 @@ function agregarProceso(form) {
 }
 
 function ejecutarInstruccion() {
-	tiempoActual = Number(document.getElementById('tiempo-actual').innerHTML) + 1;
-
+	tiempoActual += 1;
 	document.getElementById('tiempo-actual').innerHTML = tiempoActual;
+	actualizarRunningProceso();
+}
+
+function actualizarRunningProceso() {
+	procesoRunning.cpuAsignado += 1;
+}
+
+function renderRunningSummary() {
+	document
+		.getElementById('running-proceso-summary')
+		.appendChild(procesoRunning.toSummaryDiv());
 }

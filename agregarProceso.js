@@ -11,7 +11,7 @@ function crearProceso(form) {
 }
 
 function organizarProceso(nuevoProceso) {
-	// sumarProcesos();
+	sumarProcesos();
 	if (document.getElementById('running-proceso').innerHTML.length <= 60) {
 		addRunningProceso(nuevoProceso);
 	} else {
@@ -24,6 +24,7 @@ function addRunningProceso(nuevoProceso) {
 	document
 		.getElementById('running-proceso')
 		.appendChild(procesoRunning.toRunningDiv());
+	renderRunningSummary();
 }
 
 function addReadyProceso(nuevoProceso) {
@@ -32,8 +33,6 @@ function addReadyProceso(nuevoProceso) {
 }
 
 function sumarProcesos() {
-	numeroProcesos =
-		Number(document.getElementById('nombre-proceso-form').value) + 1;
-
-	document.getElementById('nombre-proceso-form').value = numeroProcesos;
+	numeroProcesos += 1;
+	document.getElementById('nombre-proceso-form').value = numeroProcesos + 1;
 }
