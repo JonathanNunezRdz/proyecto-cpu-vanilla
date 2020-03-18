@@ -12,10 +12,31 @@
 		<title>Proyecto CPU</title>
 	</head>
 	<body>
-		<div class="container-fluid mt-3">
+		<div class="container-fluid">
 			<div class="row">
+				<!-- Fila de input del archivo -->
 				<div class="col-12">
-					<div class="row border-bottom">
+					<div class="row text-center border-bottom py-3">
+						<div class="col">
+							<h3 class="mb-0">My Little So</h3>
+						</div>
+						<div class="col">
+							<form action="" class="mb-0 w-50 mx-auto">
+								<div class="form-group mb-0">
+									<input
+										type="file"
+										class="form-control-file"
+										id="input-file"
+									/>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Fila de informacion del tiempo -->
+				<div class="col-12">
+					<div class="row border-bottom py-3">
 						<div class="col-2">
 							<h4>Tiempo Actual: 0</h4>
 						</div>
@@ -25,18 +46,19 @@
 							</button>
 						</div>
 						<div class="col-5">
-							<form>
-								<div class="form-group row">
+							<form class="mb-0">
+								<div class="form-group row mb-0">
 									<label for="interruption-form" class="col-2 col-form-label"
 										>Interrupcion</label
 									>
 									<div class="col-6">
 										<select class="form-control" id="interruption-form">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
+											<option>SVC de solicitud de I/O</option>
+											<option>SVC de terminación normal</option>
+											<option>SVC de solitud de fecha</option>
+											<option>Error de programa</option>
+											<option>Externa de quantum expirado</option>
+											<option>Dispositivo de I/O</option>
 										</select>
 									</div>
 									<div class="col-4">
@@ -49,12 +71,13 @@
 						</div>
 					</div>
 				</div>
+				<!-- Fila para agregar procesos y colocarlos en su lugar -->
 				<div class="col-12">
 					<div class="row border-bottom py-3">
-						<div class="col-1">
+						<div class="col-2">
 							<h5>Procesos</h5>
 						</div>
-						<div class="col">
+						<div class="col pr-1">
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">New</h5>
@@ -113,54 +136,63 @@
 								</div>
 							</div>
 						</div>
-						<div class="col">
+						<div class="col px-1">
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Ready</h5>
 									<div class="card-text text-center">
-										Aqui van los procesos en ready.
+										<!-- Aqui van los procesos en ready. -->
+										<div class="my-2 border">1</div>
+										<div class="my-2 border">2</div>
+										<div class="my-2 border">4</div>
+										<div class="my-2 border">5</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col">
+						<div class="col px-1">
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Running</h5>
 									<div class="card-text text-center">
-										Aqui va el proceso en running.
+										<!-- Aqui va el proceso en running. -->
+										<div class="my-2 border bg-success">3</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col">
+						<div class="col px-1">
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Blocked</h5>
 									<div class="card-text text-center">
-										Aqui van los procesos en blocked.
+										<!-- Aqui van los procesos en blocked. -->
+										<div class="my-2 border">6</div>
+										<div class="my-2 border">8</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col">
+						<div class="col pl-1">
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Finished</h5>
 									<div class="card-text text-center">
-										Aqui van los procesos en finished.
+										<!-- Aqui van los procesos en finished. -->
+										<div class="my-2 border">7</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<!-- Fila de informacion del proceso actual y de algoritmo de scheduling. -->
 				<div class="col-12">
 					<div class="row py-3 border-bottom">
-						<div class="col-1">
+						<div class="col-2">
 							<h5>CPU</h5>
 						</div>
-						<div class="col">
+						<div class="col-6 pr-1">
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Scheduling</h5>
@@ -171,6 +203,131 @@
 										<p>Envejecimiento: <span>2</span></p>
 										<p>CPU Restante: <span>12</span></p>
 										<p>Quantum Restante: <span>5</span></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-4 pl-1">
+							<div class="card" style="height: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">
+										CPU
+									</h5>
+									<div class="card-text">
+										<form>
+											<div class="form-group">
+												<div>
+													<select class="form-control" id="interruption-form">
+														<option>FIFO</option>
+														<option>Round Robin</option>
+														<option>SRT</option>
+														<option>HRRN</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label
+													for="quantum-proceso-form"
+													class="col-4 col-form-label"
+													>Quantum:</label
+												>
+												<div class="col-8">
+													<input
+														type="number"
+														class="form-control"
+														id="quantum-proceso-form"
+														value="5"
+														required
+													/>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Fila para memoria -->
+				<div class="col-12">
+					<div class="row py-3 border-bottom">
+						<div class="col-2">
+							<h5>Memoria</h5>
+						</div>
+						<div class="col-6 pr-1">
+							<div class="card" style="height: 18rem;">
+								<div class="card-body">
+									<table class="table table-borderless text-center">
+										<thead>
+											<tr>
+												<th>pag</th>
+												<th>r</th>
+												<th>llegada</th>
+												<th>ult acceso</th>
+												<th>accessos</th>
+												<th>NUR</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="border-bottom">
+												<td>0</td>
+												<td>1</td>
+												<td>8</td>
+												<td>13</td>
+												<td>5</td>
+												<td><span>0</span><span>1</span></td>
+											</tr>
+											<tr class="border-bottom">
+												<td>1</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>5</td>
+												<td><span>0</span><span>1</span></td>
+											</tr>
+											<tr class="border-bottom">
+												<td>2</td>
+												<td>1</td>
+												<td>11</td>
+												<td>17</td>
+												<td>5</td>
+												<td><span>0</span><span>1</span></td>
+											</tr>
+											<tr class="border-bottom">
+												<td>3</td>
+												<td>1</td>
+												<td>12</td>
+												<td>16</td>
+												<td>5</td>
+												<td><span>0</span><span>1</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="col-4 pl-1">
+							<div class="card" style="height: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">
+										Memoria
+									</h5>
+									<div class="card-text">
+										<form>
+											<div class="form-group">
+												<div>
+													<select class="form-control" id="interruption-form">
+														<option>FIFO</option>
+														<option>LRU</option>
+														<option>LFU</option>
+														<option>NUR</option>
+													</select>
+												</div>
+												<div>
+													<!--Aqui va el quantum robin-->
+												</div>
+											</div>
+										</form>
 									</div>
 								</div>
 							</div>

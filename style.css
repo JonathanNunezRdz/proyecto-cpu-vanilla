@@ -1,3 +1,15 @@
 .cpu-summary > p {
 	margin: 0.75rem 0rem 0.75rem 0rem;
 }
+
+.table thead th {
+	padding: 0rem 0.75rem 0rem 0.75rem;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+input[type='file' i] {
+	text-align: center !important;
+}
