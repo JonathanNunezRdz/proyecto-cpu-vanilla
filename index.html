@@ -38,10 +38,14 @@
 				<div class="col-12">
 					<div class="row border-bottom py-3">
 						<div class="col-2">
-							<h4>Tiempo Actual: 0</h4>
+							<h4>Tiempo Actual: <span id="tiempo-actual">0</span></h4>
 						</div>
 						<div class="col-5">
-							<button type="button" class="btn btn-primary btn-block">
+							<button
+								type="button"
+								class="btn btn-primary btn-block"
+								onclick="ejecutarInstruccion()"
+							>
 								Ejecutar instruccion
 							</button>
 						</div>
@@ -82,7 +86,7 @@
 								<div class="card-body">
 									<h5 class="card-title">New</h5>
 									<div class="card-text">
-										<form>
+										<form action="" id="agregar-proceso-form">
 											<div class="form-group row">
 												<label
 													for="nombre-proceso-form"
@@ -90,9 +94,14 @@
 													>Nombre:</label
 												>
 												<div class="col-8">
-													<div class="border rounded text-center">
-														<p class="my-2">3</p>
-													</div>
+													<input
+														type="number"
+														class="form-control"
+														id="nombre-proceso-form"
+														name="nombre-proceso-form"
+														value="2"
+														disabled
+													/>
 												</div>
 											</div>
 
@@ -107,6 +116,7 @@
 														type="number"
 														class="form-control"
 														id="paginas-proceso-form"
+														name="paginas-proceso-form"
 														required
 													/>
 												</div>
@@ -123,6 +133,7 @@
 														type="number"
 														class="form-control"
 														id="ejec-total-proceso-form"
+														name="ejec-total-proceso-form"
 														required
 													/>
 												</div>
@@ -137,15 +148,11 @@
 							</div>
 						</div>
 						<div class="col px-1">
-							<div class="card" style="height: 18rem;">
+							<div class="card overflow-auto" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Ready</h5>
-									<div class="card-text text-center">
+									<div class="card-text text-center" id="ready-procesos">
 										<!-- Aqui van los procesos en ready. -->
-										<div class="my-2 border">1</div>
-										<div class="my-2 border">2</div>
-										<div class="my-2 border">4</div>
-										<div class="my-2 border">5</div>
 									</div>
 								</div>
 							</div>
@@ -336,6 +343,8 @@
 				</div>
 			</div>
 		</div>
+		<script src="./Proceso.js"></script>
+		<script src="./index.js"></script>
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
