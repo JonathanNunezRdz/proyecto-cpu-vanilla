@@ -8,6 +8,7 @@
 			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 			crossorigin="anonymous"
 		/>
+		<link rel="stylesheet" href="style.css" />
 		<title>Proyecto CPU</title>
 	</head>
 	<body>
@@ -116,7 +117,7 @@
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Ready</h5>
-									<div class="card-text">
+									<div class="card-text text-center">
 										Aqui van los procesos en ready.
 									</div>
 								</div>
@@ -126,7 +127,7 @@
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Running</h5>
-									<div class="card-text">
+									<div class="card-text text-center">
 										Aqui va el proceso en running.
 									</div>
 								</div>
@@ -136,7 +137,7 @@
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Blocked</h5>
-									<div class="card-text">
+									<div class="card-text text-center">
 										Aqui van los procesos en blocked.
 									</div>
 								</div>
@@ -146,8 +147,30 @@
 							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Finished</h5>
-									<div class="card-text">
+									<div class="card-text text-center">
 										Aqui van los procesos en finished.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="row py-3 border-bottom">
+						<div class="col-1">
+							<h5>CPU</h5>
+						</div>
+						<div class="col">
+							<div class="card" style="height: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">Scheduling</h5>
+									<div class="card-text cpu-summary">
+										<p>Nombre: <span>1</span></p>
+										<p>Tiempo Llegada: <span>1</span></p>
+										<p>CPU Asignado: <span>0</span></p>
+										<p>Envejecimiento: <span>2</span></p>
+										<p>CPU Restante: <span>12</span></p>
+										<p>Quantum Restante: <span>5</span></p>
 									</div>
 								</div>
 							</div>
