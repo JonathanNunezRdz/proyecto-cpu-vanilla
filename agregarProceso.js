@@ -1,11 +1,17 @@
 function crearProceso(form) {
+	const paginas = [];
+	for (let i = 0; i < Number(form.target.elements[1].value); i++) {
+		paginas.push([0, tiempoActual, 0, 0, 0, 0]);
+	}
+	nuevaMemoria = new Memoria(Number(form.target.elements[1].value), paginas);
 	nuevoProceso = new Proceso(
 		Number(form.target.elements[0].value),
 		tiempoActual,
 		tiempoActual,
 		Number(form.target.elements[1].value),
 		quantumAsignado,
-		Number(form.target.elements[2].value)
+		Number(form.target.elements[2].value),
+		nuevaMemoria
 	);
 	return nuevoProceso;
 }
@@ -80,12 +86,39 @@ function sortProcesos() {
 	console.log(procesosReady);
 }
 
-function changeBlockedToReady() {
+function handleDispositivoIO() {
+	if (procesoRunning != null) {
+		procesosReady.push(procesoRunning);
+		procesoRunning = null;
+		document.getElementById('running-proceso').innerHTML = '';
+	}
 	procesosReady.push(procesosBlocked.shift());
-
 	sortProcesos();
+	addRunningProceso(procesosReady.shift());
 	renderReadyProcesos();
 	renderBlockedProcesos();
+}
+
+function changeBlockedToReady() {
+	if (procesoRunning === null) {
+		procesoRunning = procesosBlocked.shift();
+		addRunningProceso(procesoRunning);
+	} else {
+		procesosReady.push(procesosBlocked.shift());
+		sortProcesos();
+		renderReadyProcesos();
+	}
+	renderBlockedProcesos();
+}
+
+function changeRunningToBlocked() {
+	procesosBlocked.push(procesoRunning);
+	removeRunningProceso();
+	if (procesosReady.length > 0) {
+		changeReadyToRunning();
+	}
+	renderBlockedProcesos();
+	renderReadyProcesos();
 }
 
 function changeRunningToReady() {
@@ -118,6 +151,7 @@ function addRunningProceso(proceso) {
 		.getElementById('running-proceso')
 		.appendChild(proceso.toRunningDiv());
 	renderRunningSummary();
+	renderRunningMemoria();
 }
 
 function addReadyProceso(nuevoProceso) {

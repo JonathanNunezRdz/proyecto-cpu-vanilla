@@ -6,6 +6,7 @@ document
 	.addEventListener('submit', e => ejecutarInterrupcion(e));
 
 let algoritmoCPU = 'FIFO';
+let algoritmoMemoria = 'FIFO';
 let tiempoActual = 0;
 let numeroProcesos = 0;
 let quantumAsignado = 5;
@@ -21,13 +22,76 @@ let data = {
 	procesos: []
 };
 
-function ejecutarInstruccion() {
+function ejecutarInterrupcion(e) {
 	//ejecutarInstruccion();
+	e.preventDefault();
+	ejecutarInstruccion();
+	switch (e.target.elements[0].value) {
+		case 'SVC de solicitud de I/O':
+			{
+				if (procesoRunning != null) {
+					changeRunningToBlocked();
+				}
+			}
+			break;
+		case 'SVC de terminación normal':
+			{
+				if (procesoRunning != null) {
+					addFinishedProceso(procesoRunning);
+					removeRunningProceso();
+					if (procesosReady.length > 0) {
+						changeReadyToRunning();
+						renderReadyProcesos();
+					}
+				}
+			}
+			break;
+		case 'SVC de solitud de fecha':
+			{
+				{
+					if (procesoRunning != null) {
+						changeRunningToBlocked();
+					}
+				}
+			}
+			break;
+		case 'Error de programa':
+			{
+				if (procesoRunning != null) {
+					addFinishedProceso(procesoRunning);
+					removeRunningProceso();
+					if (procesosReady.length > 0) {
+						changeReadyToRunning();
+						renderReadyProcesos();
+					}
+				}
+			}
+			break;
+		case 'Externa de quantum expirado':
+			{
+				if (procesoRunning != null) {
+					changeRunningToReady();
+					changeReadyToRunning();
+					renderReadyProcesos();
+				}
+			}
+			break;
+		case 'Dispositivo de I/O': {
+			if (procesosBlocked.length > 0) {
+				handleDispositivoIO();
+			}
+		}
+	}
 }
 
 function cambiarAlgoritmoCPU() {
 	algoritmoCPU = document.getElementById('algoritmo-cpu-form').value;
 	sortProcesos();
+}
+
+function cambiarAlgoritmoMemoria() {
+	algoritmoMemoria = document.getElementById('algoritmo-memoria-form').value;
+	console.log(algoritmoMemoria);
 }
 
 function agregarProceso(form) {
@@ -106,6 +170,13 @@ function renderRunningSummary() {
 		.appendChild(procesoRunning.toSummaryDiv());
 }
 
+function renderRunningMemoria() {
+	document.getElementById('memoria-proceso-tabla').innerHTML = '';
+	document
+		.getElementById('memoria-proceso-tabla')
+		.appendChild(procesoRunning.toMemoriaTable());
+}
+
 function cargarTxt() {
 	console.log('cargando txt');
 	const file = document.getElementById('input-file').files[0];
@@ -116,6 +187,8 @@ function cargarTxt() {
 		linea1 = txt[0].split(',');
 		data.numeroPaginas = linea1[0];
 		data.tiempoActual = linea1[1];
+		tiempoActual = Number(data.tiempoActual);
+		document.getElementById('tiempo-actual').innerHTML = tiempoActual;
 		data.numeroDeProcesos = txt[1];
 		let lineaActual = 2;
 		let proceso = {};
@@ -149,18 +222,21 @@ function cargarTxt() {
 				datosMemoria: paginas
 			};
 
+			nuevaMemoria = new Memoria(nPaginas, paginas);
+
 			nuevoProceso = new Proceso(
 				i + 1,
 				Number(proceso.datosCpu.llegada),
 				data.tiempoActual,
 				Number(proceso.datosCpu.tiempoTotalEstimado),
 				5,
-				nPaginas
+				nPaginas,
+				nuevaMemoria
 			);
 			organizarProceso(nuevoProceso, Number(proceso.datosCpu.estado));
+
 			data.procesos.push(proceso);
 		}
 	});
 	reader.readAsText(file, 'UTF-8');
-	console.log(procesosReady);
 }

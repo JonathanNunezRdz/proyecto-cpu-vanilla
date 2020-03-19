@@ -50,7 +50,7 @@
 							</button>
 						</div>
 						<div class="col-5">
-							<form class="mb-0" id="ejecutar-interrupcion-form">
+							<form action="" class="mb-0" id="ejecutar-interrupcion-form">
 								<div class="form-group row mb-0">
 									<label for="interruption-form" class="col-2 col-form-label"
 										>Interrupcion</label
@@ -77,11 +77,11 @@
 				</div>
 				<!-- Fila para agregar procesos y colocarlos en su lugar -->
 				<div class="col-12">
-					<div class="row border-bottom py-3">
-						<div class="col-2">
+					<div class="row border-bottom py-3 procesos-background">
+						<div class="col-1">
 							<h5>Procesos</h5>
 						</div>
-						<div class="col pr-1">
+						<div class="col-3 pr-1">
 							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">New</h5>
@@ -189,11 +189,11 @@
 				</div>
 				<!-- Fila de informacion del proceso actual y de algoritmo de scheduling. -->
 				<div class="col-12">
-					<div class="row py-3 border-bottom">
-						<div class="col-2">
+					<div class="row py-3 border-bottom cpu-background">
+						<div class="col-1">
 							<h5>CPU</h5>
 						</div>
-						<div class="col-6 pr-1">
+						<div class="col-7 pr-1">
 							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">Scheduling</h5>
@@ -251,14 +251,14 @@
 				</div>
 				<!-- Fila para memoria -->
 				<div class="col-12">
-					<div class="row py-3 border-bottom">
+					<div class="row py-3 border-bottom memoria-background">
 						<div class="col-2">
 							<h5>Memoria</h5>
 						</div>
 						<div class="col-6 pr-1">
-							<div class="card">
-								<div class="card-body">
-									<table class="table table-borderless text-center">
+							<div class="card overflow-auto">
+								<div class="card-body" id="memoria-proceso-tabla">
+									<!-- <table class="table table-borderless text-center">
 										<thead>
 											<tr>
 												<th>pag</th>
@@ -303,7 +303,7 @@
 												<td><span>0</span><span>1</span></td>
 											</tr>
 										</tbody>
-									</table>
+									</table> -->
 								</div>
 							</div>
 						</div>
@@ -317,17 +317,21 @@
 										<form>
 											<div class="form-group">
 												<div>
-													<select class="form-control" id="interruption-form">
+													<select
+														class="form-control"
+														id="algoritmo-memoria-form"
+														onchange="cambiarAlgoritmoMemoria()"
+													>
 														<option>FIFO</option>
 														<option>LRU</option>
 														<option>LFU</option>
 														<option>NUR</option>
 													</select>
 												</div>
-												<div>
-													<!--Aqui va el quantum robin-->
-												</div>
 											</div>
+											<button type="submit" class="btn btn-warning btn-block">
+												Reset NUR bits
+											</button>
 										</form>
 									</div>
 								</div>

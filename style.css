@@ -17,3 +17,15 @@ input[type='file' i] {
 .card {
 	height: 20rem;
 }
+
+.procesos-background {
+	background-color: #20cfcd;
+}
+
+.cpu-background {
+	background-color: #ffdd5f;
+}
+
+.memoria-background {
+	background-color: #92e161;
+}

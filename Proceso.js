@@ -5,7 +5,8 @@ class Proceso {
 		tiempoActual,
 		ejecucionTotal,
 		quantumRestante,
-		paginas
+		paginas,
+		memoria
 	) {
 		this.nombre = nombre;
 		this.tiempoLlegada = tiempoLlegada;
@@ -16,6 +17,66 @@ class Proceso {
 		this.paginas = paginas;
 		this.ejecucionTotal = ejecucionTotal;
 		this.prioridad = (this.envejecimiento + ejecucionTotal) / ejecucionTotal;
+		this.memoria = memoria;
+	}
+
+	toMemoriaTable() {
+		const table = document.createElement('table');
+		table.classList.add('table', 'table-borderless', 'text-center');
+
+		let header = document.createElement('thead');
+		let row = document.createElement('tr');
+
+		let cell = document.createElement('th');
+		cell.innerHTML = 'pag';
+		row.appendChild(cell);
+
+		cell = document.createElement('th');
+		cell.innerHTML = 'r';
+		row.appendChild(cell);
+
+		cell = document.createElement('th');
+		cell.innerHTML = 'llegada';
+		row.appendChild(cell);
+
+		cell = document.createElement('th');
+		cell.innerHTML = 'ult acceso';
+		row.appendChild(cell);
+
+		cell = document.createElement('th');
+		cell.innerHTML = 'acceso';
+		row.appendChild(cell);
+
+		cell = document.createElement('th');
+		cell.innerHTML = 'NUR';
+		row.appendChild(cell);
+
+		header.appendChild(row);
+		table.appendChild(header);
+
+		// document
+		// 	.getElementById('memoria-proceso-tabla')
+		// 	.insertAdjacentHTML(
+		// 		'afterbegin',
+		// 		`<table><thead><tr> <th>pag</th> <th>r</th> <th>llegada</th> <th>ult acceso</th> <th>accessos</th> <th>NUR</th> </tr></thead><table>`
+		// 	);
+
+		for (let i = 0; i < this.memoria.numeroDePaginas; i++) {
+			row = table.insertRow(-1);
+			cell = row.insertCell(-1);
+			cell.innerHTML = i;
+			for (let j = 0; j < this.memoria.paginas[i].length - 1; j++) {
+				if (j >= 4) {
+					cell = row.insertCell(-1);
+					cell.innerHTML =
+						this.memoria.paginas[i][j] + '' + this.memoria.paginas[i][j + 1];
+				} else {
+					cell = row.insertCell(-1);
+					cell.innerHTML = this.memoria.paginas[i][j];
+				}
+			}
+		}
+		return table;
 	}
 
 	toDiv() {
@@ -73,5 +134,12 @@ class Proceso {
 			'\nEjecucion Total: ' +
 			this.ejecucionTotal
 		);
+	}
+}
+
+class Memoria {
+	constructor(numeroDePaginas, paginas) {
+		this.numeroDePaginas = numeroDePaginas;
+		this.paginas = paginas;
 	}
 }
