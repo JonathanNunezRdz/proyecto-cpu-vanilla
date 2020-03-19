@@ -21,7 +21,7 @@
 							<h3 class="mb-0">My Little So</h3>
 						</div>
 						<div class="col">
-							<form action="" class="mb-0 w-50 mx-auto">
+							<form action="" class="mb-0 w-50 mx-auto" onchange="cargarTxt()">
 								<div class="form-group mb-0">
 									<input
 										type="file"
@@ -50,13 +50,13 @@
 							</button>
 						</div>
 						<div class="col-5">
-							<form class="mb-0">
+							<form class="mb-0" id="ejecutar-interrupcion-form">
 								<div class="form-group row mb-0">
 									<label for="interruption-form" class="col-2 col-form-label"
 										>Interrupcion</label
 									>
 									<div class="col-6">
-										<select class="form-control" id="interruption-form">
+										<select class="form-control" id="interrupcion-form">
 											<option>SVC de solicitud de I/O</option>
 											<option>SVC de terminación normal</option>
 											<option>SVC de solitud de fecha</option>
@@ -161,27 +161,25 @@
 							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title">Running</h5>
-									<div class="card-text text-center" id="running-proceso">
-										<!-- Aqui va el proceso en running. -->
-									</div>
+									<div class="card-text text-center" id="running-proceso"></div>
 								</div>
 							</div>
 						</div>
 						<div class="col px-1">
-							<div class="card">
+							<div class="card overflow-auto">
 								<div class="card-body">
 									<h5 class="card-title">Blocked</h5>
-									<div class="card-text text-center">
+									<div class="card-text text-center" id="blocked-procesos">
 										<!-- Aqui van los procesos en blocked. -->
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col pl-1">
-							<div class="card">
+							<div class="card overflow-auto">
 								<div class="card-body">
 									<h5 class="card-title">Finished</h5>
-									<div class="card-text text-center">
+									<div class="card-text text-center" id="finished-procesos">
 										<!-- Aqui van los procesos en finished. -->
 									</div>
 								</div>
@@ -216,7 +214,11 @@
 										<form>
 											<div class="form-group">
 												<div>
-													<select class="form-control" id="interruption-form">
+													<select
+														class="form-control"
+														id="algoritmo-cpu-form"
+														onchange="cambiarAlgoritmoCPU()"
+													>
 														<option>FIFO</option>
 														<option>Round Robin</option>
 														<option>SRT</option>

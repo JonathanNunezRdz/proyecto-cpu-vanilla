@@ -15,6 +15,7 @@ class Proceso {
 		this.quantumRestante = quantumRestante;
 		this.paginas = paginas;
 		this.ejecucionTotal = ejecucionTotal;
+		this.prioridad = (this.envejecimiento + ejecucionTotal) / ejecucionTotal;
 	}
 
 	toDiv() {
