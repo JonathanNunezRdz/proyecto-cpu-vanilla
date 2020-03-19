@@ -21,7 +21,7 @@
 							<h3 class="mb-0">My Little So</h3>
 						</div>
 						<div class="col">
-							<form action="" class="mb-0 w-50 mx-auto">
+							<form action="" class="mb-0 w-50 mx-auto" onchange="cargarTxt()">
 								<div class="form-group mb-0">
 									<input
 										type="file"
@@ -82,7 +82,7 @@
 							<h5>Procesos</h5>
 						</div>
 						<div class="col pr-1">
-							<div class="card">
+							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">New</h5>
 									<div class="card-text">
@@ -99,7 +99,7 @@
 														class="form-control"
 														id="nombre-proceso-form"
 														name="nombre-proceso-form"
-														value="1"
+														value="2"
 														disabled
 													/>
 												</div>
@@ -148,7 +148,7 @@
 							</div>
 						</div>
 						<div class="col px-1">
-							<div class="card overflow-auto">
+							<div class="card overflow-auto" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Ready</h5>
 									<div class="card-text text-center" id="ready-procesos">
@@ -158,31 +158,35 @@
 							</div>
 						</div>
 						<div class="col px-1">
-							<div class="card">
+							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Running</h5>
-									<div class="card-text text-center" id="running-proceso">
+									<div class="card-text text-center">
 										<!-- Aqui va el proceso en running. -->
+										<div class="my-2 border bg-success">3</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col px-1">
-							<div class="card">
+							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Blocked</h5>
 									<div class="card-text text-center">
 										<!-- Aqui van los procesos en blocked. -->
+										<div class="my-2 border">6</div>
+										<div class="my-2 border">8</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col pl-1">
-							<div class="card">
+							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Finished</h5>
 									<div class="card-text text-center">
 										<!-- Aqui van los procesos en finished. -->
+										<div class="my-2 border">7</div>
 									</div>
 								</div>
 							</div>
@@ -196,18 +200,22 @@
 							<h5>CPU</h5>
 						</div>
 						<div class="col-6 pr-1">
-							<div class="card">
+							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">Scheduling</h5>
-									<div
-										class="card-text cpu-summary"
-										id="running-proceso-summary"
-									></div>
+									<div class="card-text cpu-summary">
+										<p>Nombre: <span>1</span></p>
+										<p>Tiempo Llegada: <span>1</span></p>
+										<p>CPU Asignado: <span>0</span></p>
+										<p>Envejecimiento: <span>2</span></p>
+										<p>CPU Restante: <span>12</span></p>
+										<p>Quantum Restante: <span>5</span></p>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-4 pl-1">
-							<div class="card">
+							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">
 										CPU
@@ -254,7 +262,7 @@
 							<h5>Memoria</h5>
 						</div>
 						<div class="col-6 pr-1">
-							<div class="card">
+							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<table class="table table-borderless text-center">
 										<thead>
@@ -306,7 +314,7 @@
 							</div>
 						</div>
 						<div class="col-4 pl-1">
-							<div class="card">
+							<div class="card" style="height: 18rem;">
 								<div class="card-body">
 									<h5 class="card-title">
 										Memoria
@@ -337,7 +345,6 @@
 		</div>
 		<script src="./Proceso.js"></script>
 		<script src="./index.js"></script>
-		<script src="./agregarProceso.js"></script>
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
