@@ -20,6 +20,19 @@ class Proceso {
 		this.memoria = memoria;
 	}
 
+	toDropdownDiv() {
+		const select = document.createElement('select');
+		select.classList.add('form-control');
+
+		for (let i = 0; i < this.memoria.numeroDePaginas; i++) {
+			const option = document.createElement('option');
+			option.innerHTML = i;
+			select.appendChild(option);
+		}
+
+		return select;
+	}
+
 	toMemoriaTable() {
 		const table = document.createElement('table');
 		table.classList.add('table', 'table-borderless', 'text-center');
@@ -63,9 +76,12 @@ class Proceso {
 
 		for (let i = 0; i < this.memoria.numeroDePaginas; i++) {
 			row = table.insertRow(-1);
+			if (this.memoria.paginas[i][0] == 1) {
+				row.classList.add('bg-limon');
+			}
 			cell = row.insertCell(-1);
 			cell.innerHTML = i;
-			for (let j = 0; j < this.memoria.paginas[i].length - 1; j++) {
+			for (let j = 0; j < this.memoria.paginas[i].length - 2; j++) {
 				if (j >= 4) {
 					cell = row.insertCell(-1);
 					cell.innerHTML =

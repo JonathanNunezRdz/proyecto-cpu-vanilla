@@ -1,16 +1,16 @@
 function crearProceso(form) {
 	const paginas = [];
 	for (let i = 0; i < Number(form.target.elements[1].value); i++) {
-		paginas.push([0, tiempoActual, 0, 0, 0, 0]);
+		paginas.push([0, tiempoActual, 0, 0, 0, 0, 0]);
 	}
 	nuevaMemoria = new Memoria(Number(form.target.elements[1].value), paginas);
 	nuevoProceso = new Proceso(
 		Number(form.target.elements[0].value),
 		tiempoActual,
 		tiempoActual,
-		Number(form.target.elements[1].value),
-		quantumAsignado,
 		Number(form.target.elements[2].value),
+		quantumAsignado,
+		Number(form.target.elements[1].value),
 		nuevaMemoria
 	);
 	return nuevoProceso;
@@ -143,6 +143,9 @@ function removeRunningProceso() {
 function addFinishedProceso(proceso) {
 	procesosFinished.push(proceso);
 	document.getElementById('finished-procesos').appendChild(proceso.toDiv());
+	document.getElementById('running-proceso-summary').innerHTML = '';
+	document.getElementById('memoria-proceso-tabla').innerHTML = '';
+	document.getElementById('pagina-form').innerHTML = '';
 }
 
 function addRunningProceso(proceso) {
@@ -152,6 +155,7 @@ function addRunningProceso(proceso) {
 		.appendChild(proceso.toRunningDiv());
 	renderRunningSummary();
 	renderRunningMemoria();
+	renderRunningMemoriaDropdown();
 }
 
 function addReadyProceso(nuevoProceso) {
